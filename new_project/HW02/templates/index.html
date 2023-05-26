@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <style>
+     a {
+      text-decoration: none
+     }
+    </style>
+</head>
+<body>
+<div style="padding: 18px; background-color: DodgerBlue">
+    <button style="padding: 4px; background-color: Orange"><a href="{% url 'login' %}"> Login </a></button>
+    <button style="padding: 4px; background-color: Orange"><a href="{% url 'registration' %}"> Registration </a></button>
+    <button style="padding: 4px; background-color: Orange"><a href="{% url 'index' %}"> Main </a></button>
+    <button style="padding: 4px; background-color: Orange"><a href="{% url 'details' %}"> Details Blog </a></button>
+    <button style="padding: 4px; background-color: Orange"><a href="{% url 'create' %}"> Create Blog </a></button>
+</div>
+<div>
+  {% block cont %}
+  <p></p>
+  <a href="{% url 'details' %}"> Blog #1 </a>
+  <p></p>
+  <a href="{% url 'details' %}"> Blog #2 </a>
+  <p></p>
+  <a href="{% url 'details' %}"> Blog #3 </a>
+  {% endblock %}
+</div>
+</body>
+</html>
