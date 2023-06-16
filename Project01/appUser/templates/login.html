@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body bgcolor="Lavender">
+<div>
+    <button style="padding: 4px; background-color: Gold">
+    <a href="{% url 'get_registration' %}"> Реєстрація </a></button>
+</div>
+<p>Введіть логін та пароль</p>
+<div>
+  <form action="{% url 'my_login' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" style="padding: 4px; background-color: Gold"> OK </button>
+  </form>
+</div>
+</body>
+</html>

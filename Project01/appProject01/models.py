@@ -15,6 +15,7 @@ class Author(models.Model):
 
 
 class Topic(models.Model):
+    slug = models.SlugField(unique=True, blank=True, null=True)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     author = models.ManyToManyField(Author)

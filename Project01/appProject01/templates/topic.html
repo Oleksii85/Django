@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+{% for top in topic %}
+<div>
+  <h3>{{top.title}}</h3>
+    <p>Опис: {{top.description}}</p>
+    <button style="padding: 4px; background-color: Gold">
+        <a href="{% url 'get_topic' top.slug %}">Відкрити {{top.title}}</a></button>
+</div>
+{% endfor %}
+{% endblock %}

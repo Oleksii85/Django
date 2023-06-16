@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<p>
+<form>
+    <input type="text" name="search">
+    <button type="submit">Пошук</button>
+</form>
+    </p>
+{% for post in posts %}
+<div>
+  <h3>{{post.title}}</h3>
+  <button style="padding: 4px; background-color: Gold">
+      <a href="{% url 'get_post' post.slug %}">Відкрити {{post.title}} </a></button>
+  <p>Автор: {{post.author}}</p>
+</div>
+{% endfor %}
+{% endblock %}
