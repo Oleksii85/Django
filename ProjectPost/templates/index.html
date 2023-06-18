@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+     a {
+      text-decoration: none
+     }
+    </style>
+</head>
+<body bgcolor="Lavender">
+<div style="padding: 18px; background-color: DodgerBlue">
+    <button style="padding: 4px; background-color: Orange">
+        <a href="{% url 'my_logout' %}">Вийти</a></button>
+    <button style="padding: 4px; background-color: Orange">
+    <a href="{% url 'get_all_topic' %}">Всі ТОП</a></button>
+    <button style="padding: 4px; background-color: Orange">
+        <a href="{% url 'get_all_posts' %}">Всі пости</a></button>
+    <button style="padding: 4px; background-color: Orange">
+    <a href="{% url 'post_form' %}">Новий пост</a></button>
+</div>
+<div>
+    <p>Користувач: {{request.user}}</p>
+  {% block cont %}
+
+  {% endblock %}
+</div>
+</body>
+</html>

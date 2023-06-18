@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<div>
+    <h3>{{post.title}}</h3>
+    <p>Автор: {{post.author}}</p>
+    <p>Створено: {{post.created_at}}</p>
+    <button style="padding: 4px; background-color: Gold">
+        <a href="{% url 'create_comment' %}">Новий коментар</a></button>
+    <p>Коментарі:</p>
+    {% for com in comment %}
+        <div>
+            <p>{{com.content}}</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

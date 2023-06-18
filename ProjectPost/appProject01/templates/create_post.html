@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+</head>
+<body bgcolor="Lavender">
+<h3>Створення нового поста</h3>
+<div>
+  <form action="{% url 'post_form' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button style="padding: 4px; background-color: Gold"> Створити </button>
+  </form>
+</div>
+</body>
+</html>
