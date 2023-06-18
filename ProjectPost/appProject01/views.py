@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from django.views.generic.detail import DetailView
 from .models import Blogpost, Comment, Topic
 from .forms import CommentModelForm, BlogpostModelForm
@@ -50,7 +49,7 @@ class TopicsListView(ListView):
     context_object_name = "topic"
 
 
-class PostCreate(View):
+class PostCreate(CreateView):
     def get(self, request):
         form = BlogpostModelForm()
         return render(request, "create_post.html", context={"form": form})
@@ -65,7 +64,7 @@ class PostCreate(View):
         return render(request, "create_post.html", context={"form": form})
 
 
-class CommentCreate(View):
+class CommentCreate(CreateView):
     def get(self, request):
         form = CommentModelForm()
         return render(request, "create_comment.html", context={"form": form})
