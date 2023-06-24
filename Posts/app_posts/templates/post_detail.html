@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<div>
+    <h3>{{post.title}}</h3>
+    <p>{{post.content}}</p>
+    <p>Автор: {{post.author}}</p>
+    <p>Створено: {{post.created_at}}</p>
+    {% if user.is_authenticated %}
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'post_update' post.slug %}">Змінити пост</a></button>
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'post_delete' post.slug %}">Видалити пост</a></button>
+    {% endif %}
+    <p>Коментарі:</p>
+    {% for com in comment %}
+        <div>
+            <p>{{com.content}}</p>
+        </div>
+    {% endfor %}
+</div>
+<div>
+    {% if user.is_authenticated %}
+    <p>Написати новий коментар: </p>
+  <form action="{% url 'create_comment' post.slug %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button style="border-radius: 30px 30px; background-color: Gold"> Зберегти коментар </button>
+  </form>
+    {% endif %}
+</div>
+{% endblock %}

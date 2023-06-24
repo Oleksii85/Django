@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<h3>Створення нового поста</h3>
+<div>
+  <form action="{% url 'post_create' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button style="border-radius: 30px 30px; background-color: Gold"> Створити </button>
+  </form>
+</div>
+{% endblock %}

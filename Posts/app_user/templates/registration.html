@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body bgcolor="Lavender">
+<h3>Реєстрація</h3>
+   <div>
+  <form action="{% url 'get_registration' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" style="padding: 4px; background-color: Gold"> OK </button>
+  </form>
+</div>
+</body>
+</html>

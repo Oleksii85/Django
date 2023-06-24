@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body bgcolor="Lavender">
+<div class="alert">
+{% if messages %}
+<ul class="messages" >
+    {% for message in messages %}
+    <a
+        {% if message.tags %} style="padding: 6px; background-color: #ff6347;" class="{{ message.tags }}"
+        {% endif %}>{{ message }} <span
+        class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </a>
+    {% endfor %}
+
+</ul>
+{% endif %}
+</div>
+<div>
+    <button style="padding: 4px; background-color: Gold">
+    <a href="{% url 'get_registration' %}"> Реєстрація </a></button>
+    <button style="padding: 4px; background-color: Gold">
+    <a href="{% url 'get_all_topic' %}">Головна</a></button>
+</div>
+<p>Введіть логін та пароль</p>
+<div>
+  <form action="{% url 'my_login' %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit" style="padding: 4px; background-color: Gold"> OK </button>
+  </form>
+</div>
+</body>
+</html>

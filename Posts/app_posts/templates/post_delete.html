@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<h3>Видалити пост</h3>
+<div>
+  <form action="{% url 'post_delete' post.slug %}" method="post">
+      {% csrf_token %}
+    <p>Ви дійсно хочете видалити пост: "{{ object }}"?</p>
+    <button style="border-radius: 30px 30px; background-color: Gold"> Так, видалити </button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+     a {
+      text-decoration: none
+     }
+    </style>
+</head>
+<body bgcolor="Lavender">
+<div style="padding: 14px; background-color: powderblue;">
+    {% if user.is_authenticated %}
+    <a>Користувач: {{request.user}} </a>
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'my_logout' %}">Вийти</a></button>
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'password_change' %}">Змінити пароль</a></button>
+    {% else %}
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'my_login' %}"> Увійти </a></button>
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'get_registration' %}"> Реєстрація </a></button>
+    {% endif %}
+</div>
+<h3>Вітаємо! Ви на сайті постів.</h3>
+<div style="padding: 16px; background-color: DodgerBlue">
+    <button style="border-radius: 30px 30px; background-color: Orange">
+    <a href="{% url 'get_all_topic' %}">Головна</a></button>
+    <button style="border-radius: 30px 30px; background-color: Orange">
+        <a href="{% url 'get_all_posts' %}">Всі пости</a></button>
+    {% if user.is_authenticated %}
+    <button style="border-radius: 30px 30px; background-color: Orange">
+    <a href="{% url 'post_create' %}">Новий пост</a></button>
+    {% endif %}
+</div>
+<div class="alert">
+{% if messages %}
+<ul class="messages" >
+    {% for message in messages %}
+    <a
+        {% if message.tags %} style="padding: 6px; background-color: #ff6347;" class="{{ message.tags }}"
+        {% endif %}>{{ message }} <span
+        class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </a>
+    {% endfor %}
+
+</ul>
+{% endif %}
+</div>
+<div>
+  {% block cont %}
+
+  {% endblock %}
+</div>
+</body>
+</html>
