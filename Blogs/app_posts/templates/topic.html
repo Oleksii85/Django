@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+{% for top in topic %}
+<div>
+  <h3>{{top.title}}</h3>
+    <p>Опис: {{top.description}}</p>
+    <div class="d-flex flex-row">
+        <form method="POST" action="{% url 'subscriptions' top.slug %}">
+             {% csrf_token %}
+             <input type="hidden" name="next" value="{{ request.path }}">
+             <button style="border-radius: 30px 30px; background-color: Aqua"
+                     type="submit">Підписатися</button>
+         </form>
+    </div>
+    <p>Вже підписалось: {{ top.subscribe.all.count }}</p>
+    <button style="border-radius: 30px 30px; background-color: Gold">
+        <a href="{% url 'get_topic' top.slug %}">Відкрити {{top.title}}</a></button>
+</div>
+{% endfor %}
+{% endblock %}

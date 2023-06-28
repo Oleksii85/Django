@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block cont %}
+<h3>Дані про користувача {{request.user}}</h3>
+<h4>Створенні пости:</h4>
+   {% for post in posts %}
+        <p>{{post.title}}  - дата створення - {{post.created_at}}</p>
+{% endfor %}
+<h4>Створенні коментарі:</h4>
+{% for comm in comments %}
+    <p>{{comm.content}} - в пості {{comm.post.title}} - дата створення - {{comm.created_at}} </p>
+{% endfor %}
+<h4>Підписаний на:</h4>
+{% for sub in subscribe %}
+    <p>{{ sub }}</p>
+{% endfor %}
+<h4>Подобаються:</h4>
+{% for like in likes %}
+    <p>{{ like }}</p>
+{% endfor %}
+{% endblock %}
